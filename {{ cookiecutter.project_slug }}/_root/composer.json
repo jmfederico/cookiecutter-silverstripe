@@ -1,0 +1,14 @@
+{
+    "require": {},
+    "extra": {
+        "expose": [
+            "{{ cookiecutter.project_slug }}/static",
+            "{{ cookiecutter.project_slug }}/webpack/dist"
+        ]
+    },
+    "config": {
+        "process-timeout": 600
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}

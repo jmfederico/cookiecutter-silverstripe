@@ -1,0 +1,36 @@
+---
+Name: {{ cookiecutter.project_slug }}
+---
+SilverStripe\View\SSViewer:
+  themes:
+    - '$default'
+LeKoala\DebugBar\DebugBar:
+  check_local_ip: false
+
+---
+Name: {{ cookiecutter.project_slug }}_email
+After:
+  - '#emailconfig'
+---
+SilverStripe\Core\Injector\Injector:
+  Swift_Transport:
+    class: Swift_SmtpTransport
+    properties:
+      Host: '`SMTP_HOST`'
+      Port: '`SMTP_PORT`'
+      Encryption: '`SMTP_ENCRYPTION`'
+    calls:
+      Username: [ setUsername, ['`SMTP_USERNAME`'] ]
+      Password: [ setPassword, ['`SMTP_PASSWORD`'] ]
+      AuthMode: [ setAuthMode, ['login'] ]
+
+---
+Name: {{ cookiecutter.project_slug }}_debugbar
+After:
+  - '#debugbar'
+---
+LeKoala\DebugBar\DebugBar:
+  check_local_ip: false
+  # TODO: This collector disabled the Search extension:
+  # https://github.com/lekoala/silverstripe-debugbar/issues/115
+  config_collector: false
