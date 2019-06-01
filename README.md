@@ -35,7 +35,6 @@ npm add -D \
     autoprefixer \
     babel-loader \
     clean-webpack-plugin \
-    clean-webpack-plugin \
     css-loader \
     cssnano \
     event-hooks-webpack-plugin \
